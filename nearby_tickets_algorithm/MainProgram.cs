@@ -17,15 +17,7 @@ namespace nearby_tickets_algorithm
 
         private int orig_x;
         private int orig_y;
-
-        // Holds selected Tickets. Not used now, but maybe in the future
-        private List<Ticket> lst_tkt;
-
-        public MainProgram()
-        {
-            lst_tkt = new List<Ticket>();
-        }
-
+        
         /// <summary>
         /// Run the program by asking for input and computing the nearest cheapest tickets.
         /// </summary>
@@ -91,6 +83,7 @@ namespace nearby_tickets_algorithm
             int max_heightX = MAX_X + Math.Abs(MIN_X);
             int max_heightY = MAX_Y + Math.Abs(MIN_Y);
             int max_height = (max_heightX >= max_heightY) ? max_heightX : max_heightY;
+
             for (int h = 1; h < max_height; h++)
             {
                 for (int i = 0; i < h + 1; i++)
@@ -134,7 +127,6 @@ namespace nearby_tickets_algorithm
         /// <returns>-1 no match; 0 match found; 1 total number of tickets reached</returns>
         private int CheckPoint(int x, int y, int h)
         {
-            
             int result = -1;
             // If x and y are within limits (axis)
             if (CheckBoundaries(x, y))
@@ -149,9 +141,6 @@ namespace nearby_tickets_algorithm
                         tkt = evt.GetMinTicket();
                         if (tkt != null)
                         {
-                            // Add Ticket to List lst_tkt
-                            lst_tkt.Add(tkt);
-                            
                             // Print Ticket details
                             Console.WriteLine("Position (" + (x - Math.Abs(MIN_X)) + ", " + (y - Math.Abs(MIN_Y)) + ") \t" +
                                                 "Event ID " + evt.ID + "\t" +
