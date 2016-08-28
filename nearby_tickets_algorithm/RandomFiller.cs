@@ -72,7 +72,7 @@ namespace nearby_tickets_algorithm
                 {
                     coord = new Coordinate(x1, y1);
                     // Add 1+ Events on Location
-                    iterations = rnd.Next(MAX_NUMBER_EVENTS + 1);
+                    iterations = rnd.Next(1, MAX_NUMBER_EVENTS + 1);
                     for (int j = 0; j < iterations; j++)
                         coord.AddEvent();
                     events = coord.Events;
